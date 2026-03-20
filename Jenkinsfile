@@ -11,14 +11,13 @@ pipeline {
     }
 
     stages {
-        stage('Checkout Source Code') {
+      stage('Checkout Source Code') {
             steps {
                 echo "Cloning repository..."
-                // Updated to the repo URL you provided
-                git 'https://github.com/sunoj979/ci-cd-bcs178.git'
+                // Using the explicit 'url' parameter helps avoid the 'null' error
+                git url: 'https://github.com/sunoj979/ci-cd-bcs178.git', branch: 'main'
             }
         }
-
         stage('Build Docker Images') {
             steps {
                 echo "Building frontend image..."
